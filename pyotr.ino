@@ -1,4 +1,5 @@
 #define L 8
+
 #define R 7
 #define speedL 6
 #define speedR 5
@@ -31,14 +32,15 @@ void Left(int time_delay)
     delay(time_delay);
   }
 
-  void Forward (int time_delay) 
+  void Forward (float distance) 
   {
 
+int time_delay = distance/.0962;  //its going too far, we need to lower
   digitalWrite(L, HIGH);
   digitalWrite(R, HIGH);
   digitalWrite(standby, HIGH);
   analogWrite(speedL,255);
-  analogWrite(speedR,235);
+  analogWrite(speedR,249);
   delay(time_delay);
   }
 
@@ -52,11 +54,29 @@ void Left(int time_delay)
   delay(time_delay);
   }
 
-  
+void Stop (int time_delay) {
+  digitalWrite(standby, LOW);
+  delay(time_delay); }
 
 void loop() {
-  Forward (2500);
 
+  delay(1000);
+
+  Forward (5);
+  Stop(10000);
+
+  Forward (10);
+  Stop(10000);
+
+  Forward (15);
+  Stop(10000);
+
+  Forward (20);
+  Stop(10000);
+
+
+
+ 
   while (1) { 
     digitalWrite(standby, LOW);
   }
