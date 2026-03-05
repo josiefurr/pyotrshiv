@@ -1,0 +1,67 @@
+#define L 8
+#define R 7
+#define speedL 6
+#define speedR 5
+#define standby 3
+
+void setup() {
+ pinMode(5, OUTPUT);  //speed A
+ pinMode(6, OUTPUT);  //speed B
+ pinMode(7, OUTPUT);  //hannel A
+ pinMode(8, OUTPUT);  //hannel B
+ pinMode(3, OUTPUT);
+}
+
+void Left(int time_delay)
+  {
+    digitalWrite(L, LOW);
+    digitalWrite(R, HIGH);
+    analogWrite(speedL, 75);
+    analogWrite(speedR, 75);
+    delay(time_delay);
+
+  }
+
+  void Right(int time_delay)
+  {
+    digitalWrite(L, HIGH);
+    digitalWrite(R, LOW);
+    analogWrite(speedL, 75);
+    analogWrite(speedR, 75);
+    delay(time_delay);
+  }
+
+  void Forward (int time_delay) 
+  {
+
+  digitalWrite(L, HIGH);
+  digitalWrite(R, HIGH);
+  digitalWrite(standby, HIGH);
+  analogWrite(speedL,255);
+  analogWrite(speedR,235);
+  delay(time_delay);
+  }
+
+  void Backward (int time_delay) 
+  {
+  digitalWrite(L, LOW);
+  digitalWrite(R, LOW);
+  digitalWrite(standby, HIGH);
+  analogWrite(speedL,255);
+  analogWrite(speedR,255);
+  delay(time_delay);
+  }
+
+  
+
+void loop() {
+  Forward (2500);
+
+  while (1) { 
+    digitalWrite(standby, LOW);
+  }
+
+  
+  
+
+}
