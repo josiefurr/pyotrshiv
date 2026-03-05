@@ -34,13 +34,37 @@ void Left(int time_delay)
   void Forward (float distance) 
   {
 
-int time_delay = distance/.0962;  //its going too far, we need to lower
+    if(distance <=10)
+    {
+      int time_delay = (distance/109.23)*1000;  
   digitalWrite(L, HIGH);
   digitalWrite(R, HIGH);
   digitalWrite(standby, HIGH);
   analogWrite(speedL,255);
   analogWrite(speedR,249);
   delay(time_delay);
+    }
+    else if(distance >10 && distance < 40)
+    {
+int time_delay = (distance/120)*1000;  
+  digitalWrite(L, HIGH);
+  digitalWrite(R, HIGH);
+  digitalWrite(standby, HIGH);
+  analogWrite(speedL,255);
+  analogWrite(speedR,249);
+  delay(time_delay);
+    }
+    else if(distance >= 40)
+    {
+    int time_delay = (distance/113)*1000; 
+      digitalWrite(L, HIGH);
+  digitalWrite(R, HIGH);
+  digitalWrite(standby, HIGH);
+  analogWrite(speedL,255);
+  analogWrite(speedR,249);
+  delay(time_delay);
+    }
+
   }
 
   void Backward (int time_delay) 
@@ -70,10 +94,26 @@ void loop() {
   Forward (15);
   Stop(10000);
 
-  Forward (20);
+  Forward(20);
   Stop(10000);
 
+  Forward(25);
+  Stop(10000);
 
+   Forward(30);
+  Stop(10000);
+
+ Forward (35);
+  Stop(10000);
+
+   Forward (40);
+  Stop(10000);
+
+   Forward (50);
+  Stop(10000);
+
+   Forward (60);
+  Stop(10000);
 
  
   while (1) { 
@@ -81,6 +121,6 @@ void loop() {
   }
 
   // maddie testing
-  //test2
+  
 
 }
